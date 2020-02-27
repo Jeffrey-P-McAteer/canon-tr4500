@@ -24,5 +24,11 @@ package() {
   rpmextract.sh $(find ../../.. -name 'cnijfilter2-5.70-1.x86_64.rpm' )
   #tar xvf $(find . -name 'scangearmp2-3.70-1-rpm.tar.gz' )
   rpmextract.sh $(find ../../.. -name 'scangearmp2-3.70-1.x86_64.rpm' )
+  # This puts some libraries in ./usr/lib/ and some in ./usr/lib64
+  # Arch symlinks /usr/lib64 to /usr/lib so we manually move stuff
+  
+  cp -r usr/lib64/* usr/lib/
+  rm -rf usr/lib64
+
 }
 
